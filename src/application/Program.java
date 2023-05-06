@@ -55,7 +55,7 @@ public class Program {
 		System.out.println();
 		System.out.println("nome: " + func.getNome());
 		System.out.println("Departamento: " + func.getDepartamento().getNome());
-		System.out.println("Renda para " + monthEyear + ": " + String.format("%.2f", func.renda(month, year)));
+		System.out.println("Renda para " + monthEyear + ": " + String.format("%.2f", func.renda(year, month)));
 		
 		
 		sc.close();
