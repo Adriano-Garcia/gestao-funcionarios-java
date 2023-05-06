@@ -71,20 +71,34 @@ public class Trabalhador {
 		contratos.remove(contrato);
 	}
 
-	public double renda(int month, int year) {
-		double soma = salarioBase;
+//	public double renda(int month, int year) {
+//		double soma = salarioBase;
+//		Calendar cal = Calendar.getInstance();
+//		for (ContratosHoras c : contratos) {
+//			cal.setTime(c.getData());
+//			int c_month = cal.get(Calendar.MONTH);
+//			int c_year = 1 + cal.get(Calendar.YEAR);
+//			if(month == c_month && year == c_year) {
+//				soma += c.valorTotal();
+//			}
+//			
+//		}
+//		return soma;
+//
+//	}
+	
+	public double renda(int year, int month) {
+		double sum = salarioBase;
 		Calendar cal = Calendar.getInstance();
 		for (ContratosHoras c : contratos) {
 			cal.setTime(c.getData());
-			int c_month = cal.get(Calendar.MONTH);
-			int c_year = 1 + cal.get(Calendar.YEAR);
-			if(month == c_month && year == c_year) {
-				soma += c.valorTotal();
+			int c_year = cal.get(Calendar.YEAR);
+			int c_month = 1 + cal.get(Calendar.MONTH);
+			if (year == c_year && month == c_month) {
+				sum += c.valorTotal();
 			}
-			
 		}
-		return soma;
-
+		return sum;
 	}
 
 }

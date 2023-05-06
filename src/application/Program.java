@@ -21,11 +21,12 @@ public class Program {
 		
 		System.out.print("Entre com o nome do Departamento: ");
 		String nomeDepartamento = sc.nextLine();
-		System.out.print("Digite os dados do trabalhador:");
+		System.out.println("Digite os dados do trabalhador:");
 		System.out.print("nome: ");
 		String nome =sc.nextLine();
 		System.out.print("Level: ");
 		String level =sc.nextLine();
+		System.out.print("Salário base: ");
 		double salario = sc.nextDouble();
 		
 		Trabalhador func = new Trabalhador(nome, TrabalhadorLevel.valueOf(level), salario, new Departamento(nomeDepartamento));
@@ -33,8 +34,8 @@ public class Program {
 		System.out.print("quantos contratos para esse trabalhador? ");
 		int n = sc.nextInt();
 		
-		for(int i = 1; i < n; i++) {
-			System.out.print("Entre com os dados do contrato #" + i + ":");
+		for(int i = 1; i <= n; i++) {
+			System.out.println("Entre com os dados do contrato #" + i + ":");
 			System.out.print("Data: (DD/MM/YYYY): ");
 			Date dataContrato = f.parse(sc.next());
 			System.out.print("Valor por hora: ");
@@ -45,6 +46,16 @@ public class Program {
 			func.addContratos(contrato);
 		}
 		
+		System.out.println();
+		System.out.print("Entre com o mês e ano para calcular a renda (MM/YYYY): ");
+		String monthEyear = sc.next();
+		int month = Integer.parseInt(monthEyear.substring(0, 2));
+		int year = Integer.parseInt(monthEyear.substring(3));
+		
+		System.out.println();
+		System.out.println("nome: " + func.getNome());
+		System.out.println("Departamento: " + func.getDepartamento().getNome());
+		System.out.println("Renda para " + monthEyear + ": " + String.format("%.2f", func.renda(month, year)));
 		
 		
 		sc.close();
